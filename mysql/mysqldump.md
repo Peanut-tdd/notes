@@ -2,7 +2,7 @@
 
 ## 导出其他ip数据库数据到本地
 
-1. 导出education数据库里面的users表的表数据和表结构（下面以users表为例）
+1. **导出education数据库里面的users表的表数据和表结构（下面以users表为例）**
 
    **格式：**mysqldump -u[用户名] -h[ip] -p[密码] -P[端口号] 数据库名 表名 >导出的文件名.sql
 
@@ -12,15 +12,15 @@
    
    **导出多张表：**mysqldump -uroot -proot --databases test --tables t1 t2>two.sql
 
-2. 只导出表结构不导表数据，添加“-d”命令参数
+2. **只导出表结构不导表数据，添加“-d”命令参数**
 
    **例：**mysqldump -uroot -h127.0.0.1 -proot -P3306 -d education users>d:/user.sql
 
-3. 只导出表数据不导表结构，添加“-t”命令参数
+3. **只导出表数据不导表结构，添加“-t”命令参数**
 
    **例：**mysqldump -uroot -h127.0.0.1 -proot -P3306 -t education users>d:/user.sql
 
-4. 导出数据库的表结构和表数据（导入的时候需要指定数据库，保证指定的数据库存在）
+4. **导出数据库的表结构和表数据（导入的时候需要指定数据库，保证指定的数据库存在）**
 
    **导出命令：**mysqldump -h127.0.0.1 -P3306 -uroot -proot education >d:/database.sql
 
@@ -48,4 +48,8 @@
    >
    >mysql> use test;
    >mysql> source /home/test/database.sql
+
+**参考链接:**
+
+https://blog.csdn.net/u012436346/article/details/86570902
 
