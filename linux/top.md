@@ -1,3 +1,7 @@
+# top参数详情
+
+![](https://raw.githubusercontent.com/Peanut-tdd/Picture/main/1303876-20191210152709726-52408463.png)
+
 **第一行，任务队列信息，同 uptime 命令的执行结果**
 
 > 系统时间：07:27:05
@@ -104,4 +108,4 @@
 > q – 退出 top
 > s – 改变画面更新周期
 
- 
+
