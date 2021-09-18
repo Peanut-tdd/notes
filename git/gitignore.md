@@ -6,9 +6,10 @@
 
 2. 添加文件夹
 
-3. **命令：**git rm -r --cached folder/(文件夹路径)
+   ​    **命令：**git rm -r --cached folder/(文件夹路径)
 
    
+
 
 然后再执行git add,git commit ,git push命令
 

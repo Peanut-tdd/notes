@@ -27,3 +27,21 @@
 
 
 **第二步：通过code获取access_token**
+
+**第三步：通过access_token调用接口**
+
+获取access_token后，进行接口调用，有以下前提：
+
+```text
+1. access_token有效且未超时；
+2. 微信用户已授权给第三方应用帐号相应接口作用域（scope）。
+```
+
+对于接口作用域（scope），能调用的接口有以下：
+
+| 授权作用域（scope） | 接口                      | 接口说明                                             |
+| :------------------ | :------------------------ | :--------------------------------------------------- |
+| snsapi_base         | /sns/oauth2/access_token  | 通过code换取access_token、refresh_token和已授权scope |
+| snsapi_base         | /sns/oauth2/refresh_token | 刷新或续期access_token使用                           |
+| snsapi_base         | /sns/auth                 | 检查access_token有效性                               |
+| snsapi_userinfo     | /sns/userinfo             | 获取用户个人信息                                     |
