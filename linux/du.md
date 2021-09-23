@@ -49,7 +49,7 @@ du -sh *
 查看子文件大小
 
 ```
-du -s --max-depth=1
+du -h --max-depth=1
 ```
 
 ![image-20210915135911381](https://raw.githubusercontent.com/Peanut-tdd/Picture/main/image-20210915135911381.png)
@@ -63,3 +63,4 @@ du -sh *|sort -hr
 ```
 
 ![image-20210915140333524](https://raw.githubusercontent.com/Peanut-tdd/Picture/main/image-20210915140333524.png)
+
