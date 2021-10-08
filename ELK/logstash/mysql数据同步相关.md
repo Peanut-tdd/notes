@@ -1,5 +1,7 @@
 # logstash mysql数据收集
 
+配置信息目录:`/etc/logstash/conf.d`
+
 配置信息:
 
 ```
