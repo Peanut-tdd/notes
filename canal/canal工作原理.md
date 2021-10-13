@@ -24,6 +24,14 @@ canal，译意为水道/管道/沟渠，主要用途是基于 MySQL 数据库增
 
 
 
+
+
+ # canal-adapter工作原理
+
+
+
+
+
 ## 同步选型小结
 
 ![image.png](https://raw.githubusercontent.com/Peanut-tdd/Picture/main/557635cb9ad34d18bf54a619f80c47a3.png)
