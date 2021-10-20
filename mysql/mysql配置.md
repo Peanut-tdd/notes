@@ -40,7 +40,7 @@
    
    **修改配置后重启mysql**
    
-   mystemctl restart mysqld
+   systemctl restart mysqld
 
 -------
 
@@ -92,7 +92,7 @@
    ```
    server-id = 1003306
    
-   log-bin = /data/mysql/logs/binlog
+   log_bin = /data/mysql/logs/binlog
    
    binlog_format = row
    
@@ -207,7 +207,7 @@ mysqlbinlog -vv mysql-bin.000001
 
 
 
-
+注：需提前设置文件/etc/selinux/conf 文件的SELINUX为 disabled
 
 
 
