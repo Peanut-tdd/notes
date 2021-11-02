@@ -45,3 +45,4 @@
 | snsapi_base         | /sns/oauth2/refresh_token | 刷新或续期access_token使用                           |
 | snsapi_base         | /sns/auth                 | 检查access_token有效性                               |
 | snsapi_userinfo     | /sns/userinfo             | 获取用户个人信息                                     |
+

@@ -207,7 +207,7 @@ mysqlbinlog -vv mysql-bin.000001
 
 
 
-注：需提前设置文件/etc/selinux/conf 文件的SELINUX为 disabled
+大坑：需提前设置文件/etc/selinux/conf 文件的SELINUX为 disabled（修改）
 
 
 
