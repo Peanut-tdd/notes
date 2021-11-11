@@ -211,3 +211,59 @@ mysqlbinlog -vv mysql-bin.000001
 
 
 
+---
+
+
+
+### 恢复数据
+
+命令:`mysqlbinlog master-bin.000014 -d t1  --skip-gtids --stop-position=2439>test.sql`
+
+-d ：指定某个数据库日志 
+
+命令意思是将master-bin.000014日志文件内的T1数据库日志，事件点2439之前的日志，输出到test.sql
+
+然后执行:`source test.sql`
+
+
+
+
+
+抓取需要过滤的binlog片段
+
+mysqlbinlog /var/mysql/mysql-bin/binlog.000058 --skip-gtids -d loulan |grep --ignore-case CREATE -A3 -B4 > test.sql
+
+![image-20211111190500250](https://raw.githubusercontent.com/Peanut-tdd/Picture/main/image-20211111190500250.png)
+
+mysqldump导入:mysql -uadmin -p db12<4.sql   一定要写数据库名称，要不然不知道哪个库。
+
+
+
+
+
+其实还可以直接基于pos点以及时间恢复
+
+mysqlbinlog --no-defaults  --skip-gtids  --database=db12  --start-position="247" --stop-position="1920" master-binlog.000023 | mysql -u admin -p
+
+
+
+
+链接：
+http://blog.itpub.net/21374452/viewspace-2728060/
+https://blog.csdn.net/cdrcsy/article/details/82758251
+https://blog.csdn.net/u014180504/article/details/77332003
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
