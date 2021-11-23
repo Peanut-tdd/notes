@@ -239,6 +239,27 @@ class MyException extends Exception  {
 
 顶级错误处理器 set_error_handler 一般用于捕捉 E_NOTICE 、E_USER_ERROR、E_USER_WARNING、E_USER_NOTICE 级别的错误，不能捕捉 E_ERROR, E_PARSE, E_CORE_ERROR, E_CORE_WARNING, E_COMPILE_ERROR 和 E_COMPILE_WARNING。
 
+例：
+
+```
+//捕获notice等错误
+function _error_handler($errno, $errstr ,$errfile, $errline)
+{
+    echo "错误编号errno: $errno<br>";
+    echo "错误信息errstr: $errstr<br>";
+    echo "出错文件errfile: $errfile<br>";
+    echo "出错行号errline: $errline<br>";
+}
+ 
+set_error_handler('_error_handler');  // 注册错误处理方法来处理所有错误
+ 
+ 
+echo $foo['bar'];  // 由于数组未定义，会产生一个notice级别的错误
+
+```
+
+
+
 
 
 **致命错误处理器：register_shutdown_function**
