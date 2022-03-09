@@ -147,7 +147,7 @@ Total transferred:      3030000 bytes
 Total body sent:        6690000
 HTML transferred:       1530000 bytes   
 Requests per second:    15189.44 [#/sec] (mean)   //吞吐率，计算公式：Complete requests/Time taken for tests  总请求数/处理完成这些请求数所花费的时间
-Time per request:       6.584 [ms] (mean)          //用户平均请求等待时间
+Time per request:       6.584 [ms] (mean)          //用户平均请求等待时间,计算公式：Time token for tests/（Complete requests/Concurrency Level）。处理完成所有请求数所花费的时间/（总请求数/并发用户数）
 Time per request:       0.066 [ms] (mean, across all concurrent requests)
 Transfer rate:          4494.53 [Kbytes/sec] received
                         9923.57 kb/s sent
@@ -173,7 +173,7 @@ Percentage of the requests served within a certain time (ms)
  
  
  
-// Percentage of requests served within a certain time（ms）这部分数据用于描述每个请求处理时间的分布情况，比如以上测试，80%的请求处理时间都不超过7ms，这个处理时间是指前面的Time per request，即对于单个用户而言，平均每个请求的处理时间
+// Percentage of requests served within a certain time（ms）这部分数据用于描述每个请求处理时间的分布情况，比如以上测试，50%的请求处理时间都不超过7ms，这个处理时间是指前面的Time per request，即对于单个用户而言，平均每个请求的处理时间
 ```
 
 

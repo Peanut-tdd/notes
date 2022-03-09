@@ -43,3 +43,16 @@ canal，译意为水道/管道/沟渠，主要用途是基于 MySQL 数据库增
 
 
 参考链接：https://www.cnblogs.com/xuxiaojian/p/14408862.html#%E5%B8%B8%E7%94%A8%E7%9A%84%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5%E6%96%B9%E6%A1%88
+
+
+
+
+
+
+
+
+
+
+
+
+
