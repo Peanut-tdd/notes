@@ -1,6 +1,6 @@
 # AES加解密
 
-在php5.*之前使用的是mcrypt_decrypt函数，从php7.1后废弃了，我们使用openssl_encryp来实现加密和使用openssl_decrypt实现解密
+在php5.*之前使用的是mcrypt_decrypt函数，从php7.1后废弃了，我们使用openssl_encrypt来实现加密和使用openssl_decrypt实现解密
 
 
 
