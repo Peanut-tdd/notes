@@ -24,7 +24,7 @@ tar -zxvf redis-5.3.4.tgz
 cd redis-5.3.4
 
 /usr/bin/phpize        #执行phpize
-./configure --with-php-config=/usr/local/php/bin/php-config #配置环境
+./configure --with-php-config=PATH #PATH为php的地址，配置环境
 make && make install # 编译
 
 cd /etc/php.ini
