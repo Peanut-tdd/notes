@@ -1,18 +1,16 @@
 # docker compose 
 
+## pip安装
+
 安装步骤
 
 因为docker compose 是python 编写的，故先安装python 及python 软件包管理工具pip
-
-
 
 安装python
 
 ```
 yum install python36
 ```
-
-
 
 安装pip
 
@@ -28,18 +26,49 @@ $ sudo python get-pip.py    # 运行安装脚本
 $ sudo python3 get-pip.py    # 运行安装脚本。//python3 安装
 
 
-
-
 ln -s /usr/local/bin/pip /usr/bin/pip   //添加全局变量
 ```
 
-
-
-添加自动补全
+安装docker compose
 
 ```
-curl -L https://raw.githubusercontent.com/docker/compose/1.2.0/contrib/completion/bash/docker-compose > /etc/bash_completion.d/docker-compose
+sudo pip install docker-compose
 ```
+
+
+
+
+
+## 脚本安装
+
+```
+curl -SL https://github.com/docker/compose/releases/download/v2.7.0/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
+```
+
+- 添加可执行权限
+
+```
+sudo chmod +x /usr/local/bin/docker-compose
+```
+
+- 建立软连接
+
+```
+sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+```
+
+- 测试
+
+```
+[root@localhost bin]# docker-compose -v
+Docker Compose version v2.7.0
+```
+
+
+
+
+
+
 
 
 
