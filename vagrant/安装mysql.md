@@ -1,4 +1,4 @@
-# 安装
+# yum安装mysql
 
 ## 1、安装链接：https://www.cnblogs.com/shipment/p/14325309.html#1%E5%8E%BB%E5%AE%98%E7%BD%91%E4%B8%8B%E8%BD%BDyum%E4%BB%93%E5%BA%93%E6%96%87%E4%BB%B6
 
