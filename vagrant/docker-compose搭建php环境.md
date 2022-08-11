@@ -1,4 +1,4 @@
-# docker-compose 搭建php开发环境
+# docker-compose搭建php开发环境
 
 事先安装好docker和docker-compose
 

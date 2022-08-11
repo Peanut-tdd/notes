@@ -115,7 +115,7 @@ centos-7 (virtualbox, 0)
 
 
 
-## Vagrant 基本操作
+## 3、Vagrant 基本操作
 
 ### 新建虚机
 
@@ -243,7 +243,7 @@ vagrant destroy
 
 
 
-## 初识 Vagrantfile
+## 4、初识 Vagrantfile
 
 ```
 # -*- mode: ruby -*-
@@ -378,7 +378,7 @@ end
 
 
 
-## 定制带客户机增强的 box
+## 5、定制带客户机增强的 box
 
 ### 下载 Guest Addition
 
