@@ -1,6 +1,6 @@
 # 获取请求全路径
 
-```
+```php
 <?php
 
 function get_url() {

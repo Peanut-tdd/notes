@@ -58,7 +58,7 @@ iv:非NULL的初始化向量（可以是key的16位字符串，`substr($key,0,16
 
 三：填充和移除填充算法
 
-```
+```php
 /**
  * 填充算法
  * @param string $source
