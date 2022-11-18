@@ -1,7 +1,5 @@
 # php 使用protobuf
 
-Protocol Buffers 是 google 的一种数据交换的格式，它独立于语言，独立于平台。提供了多种语言的实现：java、c#、c++、go 和 python，每一种实现都包含了相应语言的[编译器](https://so.csdn.net/so/search?q=编译器&spm=1001.2101.3001.7020)以及库文件。由于它是一种二进制的格式，比使用 xml 进行数据交换快许多。
-
 
 
 **编写person.proto文件**
