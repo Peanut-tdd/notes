@@ -5,6 +5,10 @@
 ```
 #安装docker
 [root@localhost]# curl -sSL https://get.daocloud.io/docker | sh
+
+systemctl daemon-reload
+
+
 #重启
 [root@localhost]# systemctl restart docker.service
 #开机启动
