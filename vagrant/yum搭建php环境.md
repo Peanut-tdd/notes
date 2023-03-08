@@ -5,6 +5,8 @@
 **使用之前请确保已经安装wget，如未安装请执行下面一条命令来安装 yum install -y wget**
 
 ```
+yum -y install wget
+
 1）备份当前yum源防止出现意外还可以还原回来
 cd /etc/yum.repos.d/
 mv CentOS-Base.repo CentOS-Base-repo.bak
