@@ -14,7 +14,7 @@
 
 2. **只导出表结构不导表数据，添加“-d”命令参数**
 
-   **例：**mysqldump -uroot -h127.0.0.1 -proot -P3306 -d education users>d:/user.sql
+   **例：**mysqldump -uroot -h127.0.0.1 -proot -P3306 -d education users>d:/user.
 
 3. **只导出表数据不导表结构，添加“-t”命令参数**
 
@@ -53,3 +53,10 @@
 
 https://blog.csdn.net/u012436346/article/details/86570902
 
+
+
+mysqldump -h47.100.27.206 -udb_rw -p"YC5H7@Uw" -P3306 ecshop_suntory > /logs/ecshop.sql
+
+
+
+ 
