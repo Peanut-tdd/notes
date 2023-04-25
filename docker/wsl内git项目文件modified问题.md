@@ -13,3 +13,7 @@ git diff 文件名
 将git的core.filemode设置为false即可，命令：
 
 > git config core.filemode false
+
+
+
+[参考链接](https://blog.csdn.net/qq285744011/article/details/111225180)
