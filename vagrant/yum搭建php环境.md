@@ -33,16 +33,18 @@ yum makecache
 运行以下命令以添加所需的存储库：
 
 ```
+yum -y remove php* //卸载已存在的php版本
+
 sudo yum install epel-release
 sudo yum -y install https://rpms.remirepo.net/enterprise/remi-release-7.rpm
 
-
-
 sudo yum -y install yum-utils   
-yum repolist all |grep php  
+yum repolist all |grep php  //查看php各版本remi包
+
+sudo yum-config-manage --disable remi-php80
 sudo yum-config-manager --enable remi-php74
 
-sudo yum install php  php-cli php-fpm php-mysqlnd php-zip php-devel php-gd php-mcrypt php-mbstring php-curl php-xml php-pear php-bcmath php-json php-redis
+sudo yum install php  php-cli php-fpm php-mysqlnd php-zip php-devel php-gd php-mcrypt php-mbstring php-curl php-xml php-pear php-bcmath php-json php-redis php-swoole
 
 
 php -v

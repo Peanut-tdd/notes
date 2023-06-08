@@ -26,7 +26,7 @@
 
    **导入命令：**mysql -uroot -proot -h127.0.0.1 -P3306 education<d:/database.sql
 
-   
+mysqldump -u f12e062e-65e1-4eb8-944f-d5adb8adac26 -psRURW7ZbtLAUEXkK -h js.agll.biz -P 33060 ecshop_suntory > /data/db.sql
 
 ## 导入本地数据库备份到其他ip数据库（数据库要先创建）
 
@@ -36,7 +36,9 @@
 
    **命令：** ``` mysql -hip -uusername -ppassword -Pport(端口号)database_name < D:/path/database.sql```
 
-   **例：** ``` mysql -h10.0.55.16 -uloulan_test -plou-Test_123 -P4000 loulan < D:/loulan.sql```
+   **例：** ``` mysql -h10.0.55.16 -uloulan_test -plou-Test_123 -P4000 loulan < D:/loulan.sql`
+
+   ​	mysql -h47.100.27.206 -udb_rw -pYC5H7@Uw -P3306 spt_test < /data/db.sql
 
 2. 方法二：**mysql命令行**
 
