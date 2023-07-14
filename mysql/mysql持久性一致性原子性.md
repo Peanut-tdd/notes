@@ -54,7 +54,7 @@ redolog两阶段提交
 
 再看一个场景，redo log设置commit阶段发生异常，那会不会回滚事务呢？
 
-**并不会回滚事务，它会执行上图框住的逻辑，虽然redo log是处于prepare阶段，但是能通过事务id找到对应的binlog日志，所以MySQL认为是完整的，就会提交事务恢复数据。**
+**并不会回滚事务，虽然redo log是处于prepare阶段，但是能通过事务id找到对应的binlog日志，所以MySQL认为是完整的，就会提交事务恢复数据。**
 
 
 
