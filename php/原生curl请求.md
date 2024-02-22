@@ -1,6 +1,6 @@
 ## php原生curl请求
 
-#### GET、POST请求
+#### 1.1GET、POST请求
 
 ```php
 /**
@@ -129,7 +129,7 @@
 ###### application/json请求实例：
 
 ```php
-  $url = self::$host . $api_method;
+  		$url = self::$host . $api_method;
         $jsonStr = json_encode($params, 320);
         $header = array(
             'Content-Type: application/json; charset=utf-8',
@@ -143,7 +143,113 @@
 
 
 
+#### 1.2GET、POST并发请求
 
+```php
+ /**
+     * 并发请求
+     * @param $promises
+     * @param $timeout
+     * @return array
+     */
+    public static function curl_multis($promises, $timeout = 3000): array {
+        $_time_start = microtime(true);
+        $mh = curl_multi_init();
+        $ch = [];
+        foreach ($promises as $key => $promise) {
+            $ch[$key] = curl_init();
+            curl_setopt($ch[$key], CURLOPT_URL, $promise['url']);
+            curl_setopt($ch[$key], CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+            curl_setopt($ch[$key], CURLOPT_ENCODING, 'gzip, deflate');
+            curl_setopt($ch[$key], CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch[$key], CURLOPT_TIMEOUT_MS, $timeout);
+            curl_setopt($ch[$key], CURLOPT_MAXREDIRS, 2);
+            curl_setopt($ch[$key], CURLOPT_NOSIGNAL, true);
+
+            if ($promise['method'] == 'POST') {
+                curl_setopt($ch[$key], CURLOPT_POST, true);
+                if (isset($promise['headers']) && !empty($promise['headers'])) {
+                    curl_setopt($ch[$key], CURLOPT_HTTPHEADER, $promise['headers']);
+                    if (strpos(implode(',', $promise['headers']), 'Content-Type: application/json; charset=utf-8') !== false) {
+
+                        $promise['body'] = json_encode($promise['body']);
+                    }
+                }
+                if (is_array($promise['body'])) {
+                    $data_fields = http_build_query($promise['body']);
+                } else {
+                    $data_fields = $promise['body'];
+                }
+                curl_setopt($ch[$key], CURLOPT_POSTFIELDS, $data_fields);
+            }
+            if ($promise['method'] == 'GET') {
+                // 如果为GET方法，将$data_fields转换成查询字符串后附加到$url后面
+                $join_char = strpos($promise['url'], '?') === false ? '?' : '&';
+                $promise['url'] .= $join_char . http_build_query($promise['body']);
+            }
+            curl_multi_add_handle($mh, $ch[$key]);
+        }
+
+        do {
+            curl_multi_exec($mh, $running);
+            curl_multi_select($mh);
+        } while ($running > 0);
+
+        // 关闭全部句柄
+        $results = [];
+        foreach ($promises as $key => $promise) {
+            $results[$key] = curl_multi_getcontent($ch[$key]);
+            curl_multi_remove_handle($mh, $ch[$key]);
+        }
+        \Logger::rpc('##curl_multis request(' . "url:" . json_encode($promises) . " ## results:" . json_encode($results) . " ## counts:" . count($promises) . ')', microtime(true) - $_time_start, '', '', LOG_RPC_TYPE_CURL);
+        curl_multi_close($mh);
+        return $results;
+    }
+
+```
+
+
+
+
+
+###### application/json并发请求实例
+
+```php
+
+        $api_method="/ddj/userapi/nnyc";
+        $url=self::$host . $api_method;
+        $promises=[];
+        foreach($half_year_date as $date_item){
+            $promises[] = [
+                'url' => $url,
+                'method' => "POST",
+                'headers' => ['Content-Type: application/json; charset=utf-8'],
+                'body' => [
+                    'account_id' =>(int)$account_id,
+                    'start'=>(int)$date_item[0],
+                    'end'=>(int)$date_item[1]
+                ],
+            ];
+        }
+
+
+        $ret=BaseFunc::curl_multis($promises);
+
+        $result=[];
+        foreach($ret as $item){
+            $item=json_decode($item,1);
+            $records=$item['data']['records']??[];
+            if($records){
+                $account_id=$item['data']['account_id'];
+                array_walk($records,function(&$item)use($account_id){
+                    $item['account_id']=$account_id;
+                });
+
+                $result=array_merge($result,$records);
+            }
+        }
+       return $result;
+```
 
 
 
