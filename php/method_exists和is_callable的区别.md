@@ -75,6 +75,6 @@ var_dump(is_callable(array($obj,'fun1')));
 
 ```
 方法名为：func1,参数为：name,100
-bool(false) bool(true) 28
+bool(false) bool(true) 
 ```
 
