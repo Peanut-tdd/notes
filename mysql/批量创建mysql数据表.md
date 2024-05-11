@@ -1,8 +1,7 @@
 # 批量创建mysql数据表
 
 ```
-delimiter;
-
+--创建存储过程
 create procedure sp_create_tab()
 begin
 set @str = "(
@@ -43,8 +42,7 @@ set @str = "(
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  key idx_account_id(account_id),
-  UNIQUE KEY `uniq_tag_code_ability` (`user_id`,`course_id`,`date`,`chapter_id`,`module_code`,`tag_code`) USING BTREE
+  KEY`idx_account_user_course`(`account_id`,`user_id`,`course_id`,`date`,`chapter_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='归一化-知识点状态过程表'";
 set @j = 0;
 while @j < 1000 do
@@ -59,7 +57,7 @@ end
 
 
 
-delimiter;
+--执行存储过程
 call sp_create_tab;
 
 ```
