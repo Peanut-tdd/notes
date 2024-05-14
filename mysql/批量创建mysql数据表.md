@@ -1,11 +1,11 @@
 # 批量创建mysql数据表
 
 ```
---创建存储过程
+--先创建存储过程(执行一次就行了)
 create procedure sp_create_tab()
 begin
 set @str = "(
-  `id` bigint(20) unsigned NOT NULL COMMENT '主键id',
+  `id` bigint(20) unsigned NOT NULL auto_increment  COMMENT '主键id',
   `sequence` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '序列号',
   `account_id` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '学生账号ID',
   `user_id` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '用户ID',
@@ -54,14 +54,13 @@ set @j = @j + 1;
 end while;
 end
 
-
-
-
---执行存储过程
-call sp_create_tab;
-
 ```
 
 
+
+```
+--后执行存储过程
+call sp_create_tab;
+```
 
 批量创建1000个
