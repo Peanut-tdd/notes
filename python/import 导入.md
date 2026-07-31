@@ -1,5 +1,57 @@
 ### import导入相关
 
+**目录切换运行**
+
+```
+.user 目录
+├── a_module
+│   ├── __init__.py
+│   └── a.py
+└── b_module
+    ├── __init__.py
+    ├── b.py
+    └── c_module
+        ├── __init__.py
+        └── c.py
+```
+
+
+
+```
+tdd@TddM1-Pro user % python3 -m b_module.b      //-m  按包查找，而不是目录；所以user/目录下要加__init__.py，告诉python解释器这是一个包，不是目录
+Hello from A with value: 10
+Hello from C with value: 30
+
+
+
+tdd@TddM1-Pro b_module % PYTHONPATH=.. python3 -m b_module.b   //切换到b_module,必须要加PYTHONPATH，找到项目根目录 user/ 加入 sys.path  
+Hello from A with value: 10
+Hello from C with value: 30
+```
+
+
+
+| 要素               | 作用                               |
+| ------------------ | ---------------------------------- |
+| `PYTHONPATH=..`    | 项目根目录 `user/` 加入 `sys.path` |
+| `-m b_module.b`    | 以包形式运行，相对导入正常工作     |
+| `from a_module.a`  | 绝对导入，通过 `PYTHONPATH` 找到   |
+| `from .c_module.c` | 相对导入，父包 `b_module` 已知 ✅   |
+
+
+
+
+
+
+
+
+
+
+
+
+
+**__all__作用**
+
 ```
 myapp/
 ├── __init__.py
