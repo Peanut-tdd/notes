@@ -12,16 +12,62 @@
 
 
 
+**BGE-M3 embedding模型使用 **
+
 ```
-embeddings = model.encode(
-    sentences,
-    batch_size=64,			//每批处理多少个句子,batch_size 越大越快，但显存占用越高，GPU OOM
-    normalize_embeddings=True,	//把向量 L2归一化（模长=1）,归一化后，余弦相似度 = 点积，算相似度更快
-    convert_to_numpy=True,
-    show_progress_bar=True,
-    device="cuda"  # 有GPU就用
-)
+pip install FlagEmbedding 
 ```
+
+
+
+ BAAI 是北京智源，但它的模型托管在 HuggingFace（海外服务器），需要配置一下环境变量，不然下载不了
+
+```
+export HF_ENDPOINT=https://hf-mirror.com    
+```
+
+
+
+
+
+后续使用
+
+```python
+import os
+os.environ["HF_HUB_OFFLINE"] = "1"                                                                                  
+os.environ["TRANSFORMERS_OFFLINE"] = "1"                                                                            
+os.environ["HF_DATASETS_OFFLINE"] = "1"   
+
+from FlagEmbedding import BGEM3FlagModel
+
+
+class BgeM3Encoder(object):
+    def __init__(self,model_name='BAAI/bge-m3') -> None:
+        self.model = BGEM3FlagModel(model_name_or_path=model_name,use_fb16=False,local_files_only=True)
+
+
+    def encode_docs(self, texts: list[str]) :
+
+        output= self.model.encode(texts,return_dense=True,return_sparse=True,return_colbert_vecs=False,batch_size=32)
+        print(f"Output keys:{output}")
+        dense=output['dense_vecs']
+        sparse=[]
+        for i in range(len(dense)):
+            row=output["lexical_weights"][i]
+            sparse.append(row)
+        return dense,sparse
+
+
+
+```
+
+
+
+
+
+
+
+
 
 
 

@@ -13,7 +13,7 @@ Generation:生成
 分片和索引
 
 ```
-过程：数据分片chunking--> Embedding模型-->向量-->向量数据库（indexing）
+过程：数据清洗（去除html标签,页眉页脚，乱码等噪音）-->数据分片chunking--> Embedding模型-->向量-->向量数据库（indexing）
 ```
 
 
@@ -23,7 +23,7 @@ Generation:生成
 召回+合成
 
 ```
-过程：用户提问-->Embedding模型-->向量-->计算相似度（余弦/欧式距离）-->查询向量数据库获得context-->用户问题+context组合成prompt提示词-->LLM大模型-->用户
+过程：用户提问-->Embedding模型-->向量-->计算相似度（余弦/欧式距离）-->查询向量数据库获得context-->用户问题+context组合成prompt提示词-->LLM大模型-->->rerank重排-->用户
 ```
 
 
